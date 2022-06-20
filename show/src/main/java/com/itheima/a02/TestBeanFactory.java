@@ -36,9 +36,9 @@ public class TestBeanFactory {
         beanFactory.getBeansOfType(BeanPostProcessor.class).values().stream()
                 .sorted(beanFactory.getDependencyComparator())
                 .forEach(beanPostProcessor -> {
-            System.out.println(">>>>" + beanPostProcessor);
-            beanFactory.addBeanPostProcessor(beanPostProcessor);
-        });
+                    System.out.println(">>>>" + beanPostProcessor);
+                    beanFactory.addBeanPostProcessor(beanPostProcessor);
+                });
 
         for (String name : beanFactory.getBeanDefinitionNames()) {
             System.out.println(name);

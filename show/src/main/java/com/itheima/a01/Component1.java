@@ -11,13 +11,18 @@ import org.springframework.stereotype.Component;
 @Component
 public class Component1 {
 
+
     private static final Logger log = LoggerFactory.getLogger(Component1.class);
 
+    /**
+     * 获得事件发布器
+     */
     @Autowired
     private ApplicationEventPublisher context;
 
     public void register() {
         log.debug("用户注册");
+//        发送事件
         context.publishEvent(new UserRegisteredEvent(this));
     }
 

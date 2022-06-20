@@ -21,9 +21,9 @@ public class A02 {
     private static final Logger log = LoggerFactory.getLogger(A02.class);
 
     public static void main(String[] args) {
-        testClassPathXmlApplicationContext();
+//        testClassPathXmlApplicationContext();
 //        testFileSystemXmlApplicationContext();
-//        testAnnotationConfigApplicationContext();
+        testAnnotationConfigApplicationContext();
 //        testAnnotationConfigServletWebServerApplicationContext();
 
         /*DefaultListableBeanFactory beanFactory = new DefaultListableBeanFactory();
@@ -93,17 +93,20 @@ public class A02 {
     @Configuration
     static class WebConfig {
         @Bean
-        public ServletWebServerFactory servletWebServerFactory(){
+        public ServletWebServerFactory servletWebServerFactory() {
             return new TomcatServletWebServerFactory();
         }
+
         @Bean
         public DispatcherServlet dispatcherServlet() {
             return new DispatcherServlet();
         }
+
         @Bean
         public DispatcherServletRegistrationBean registrationBean(DispatcherServlet dispatcherServlet) {
             return new DispatcherServletRegistrationBean(dispatcherServlet, "/");
         }
+
         @Bean("/hello")
         public Controller controller1() {
             return (request, response) -> {

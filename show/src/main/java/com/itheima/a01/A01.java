@@ -50,19 +50,24 @@ public class A01 {
         /*
             3. ApplicationContext 比 BeanFactory 多点啥
          */
+//        3.1获取国际化信息
         System.out.println(context.getMessage("hi", null, Locale.CHINA));
         System.out.println(context.getMessage("hi", null, Locale.ENGLISH));
         System.out.println(context.getMessage("hi", null, Locale.JAPANESE));
 
+//        3.2获取resource资源文件 classpath*可以获取jar包中的资源
         Resource[] resources = context.getResources("classpath*:META-INF/spring.factories");
         for (Resource resource : resources) {
             System.out.println(resource);
         }
 
+//        3.3获取系统配置信息  来自环境变量和配置文件
         System.out.println(context.getEnvironment().getProperty("java_home"));
         System.out.println(context.getEnvironment().getProperty("server.port"));
 
-//        context.publishEvent(new UserRegisteredEvent(context));
+//        3.4发布事件，实现组件之间解耦
+        context.publishEvent(new UserRegisteredEvent(context));
+
         context.getBean(Component1.class).register();
 
         /*

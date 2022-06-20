@@ -12,6 +12,10 @@ public class Component2 {
 
     private static final Logger log = LoggerFactory.getLogger(Component2.class);
 
+    /**
+     * 事件监听
+     * @param event
+     */
     @EventListener
     public void aaa(UserRegisteredEvent event) {
         log.debug("{}", event);
